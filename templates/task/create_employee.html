@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form id="form" class="p-4" action='' method="POST">
+                    {% csrf_token %}
+                        <div class="form-group ">
+                            <label>Введите Ф.И.О. нового сотрудника</label>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <input id='second_name' type="text" class="form-control" autofocus placeholder="Фамилия"   onclick="if(this.value === 'Фамилия'){this.value='';}">
+                                </div>
+                                <div class="col-md-2">
+                                    <input id='first_name' type="text" class="form-control" autofocus placeholder="Имя"   onclick="if(this.value === 'Имя'){this.value='';}">
+                                </div>
+                                <div class="col-md-2">
+                                    <input id='father_name' type="text" class="form-control" autofocus placeholder="Отчество"   onclick="if(this.value === 'Отчество'){this.value='';}">
+                                </div>
+                                <div class="col-md-2">
+                                    <input id='age' type="text" class="form-control" autofocus placeholder="Возраст"   onclick="if(this.value === 'Возраст'){this.value='';}">
+                                </div>
+                                <div class="col-md-1">
+                                       <p>  <select id = "select_gender" name="select_position" size="1" >
+                                           <option>муж</option>
+                                           <option>жен</option>
+                                            </select>
+                                       </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <p>  <select id = "select_position" name="select_position" size="1" ></select>
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" >
+                                <div class="col-md-3">
+                                </div>
+                                 <div class="col-md-3">
+                                    <div class="submit-btn mt-0">
+                                        <button class="btn btn-primary" type="button" id='create_button'  onclick={create_employee()}>Добавить</button>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="submit-btn mt-0">
+                                        <button class="btn btn-primary" type="button" id='clear_button' onclick={document.getElementById("second_name").value='';document.getElementById("first_name").value='';document.getElementById("father_name").value=''}>Очистить</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+ </form>
+
+<script src="{% static 'js/create_employee.js' %}"></script>
+
+{% endblock %}

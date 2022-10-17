@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form id="form" class="p-5">
+                    {% csrf_token %}
+                        <div class="form-group ">
+                            <div class="row" >
+                                <div class="col-md-6">
+                                    <label for="position">Должность</label>
+                                    <input id='position' type="text" class="form-control" autofocus placeholder="">
+                                </div>
+                                <div class="col-md-6">
+                                        <label for="category">Категория</label>
+                                       <p>  <select id = "category" size="1" >
+                                           <option value="рабочий">рабочий</option>
+                                           <option value="служащий">служащий</option>
+                                           <option value="специалист">специалист</option>
+                                            </select>
+                                       </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" >
+                                 <div class="col-md-3">
+                                    <div class="submit-btn mt-0">
+                                        <button class="btn btn-primary" type="button" id='create_button'  onclick={create_position();}>Создать</button>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+ </form>
+
+<script src="{% static 'js/create_position.js' %}"></script>
+
+{% endblock %}

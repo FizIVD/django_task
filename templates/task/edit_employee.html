@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form id="form" class="p-4" action='' method="POST">
+                    {% csrf_token %}
+                        <div class="form-group ">
+                            <label id="label">Карточка сотрудника</label>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="second_name">Фамилия</label>
+                                    <input id='second_name' type="text" class="form-control" autofocus placeholder="">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="first_name">Имя</label>
+                                    <input id='first_name' type="text" class="form-control" autofocus placeholder="">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="father_name">Отчество</label>
+                                    <input id='father_name' type="text" class="form-control" autofocus placeholder="">
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="age">Возраст</label>
+                                    <input id='age' type="text" class="form-control" autofocus placeholder="">
+                                </div>
+                                <div class="col-md-1">
+                                        <label for="select_gender">Пол</label>
+                                       <p>  <select id = "select_gender" size="1" >
+                                           <option value="муж">муж</option>
+                                           <option value="жен">жен</option>
+                                            </select>
+                                       </p>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="select_position">Должность</label>
+                                    <p>  <select id = "select_position" size="1" ></select>
+                                    </p>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row" >
+                                <div class="col-md-3">
+                                </div>
+                                 <div class="col-md-3">
+                                    <div class="submit-btn mt-0">
+                                        <button class="btn btn-primary" type="button" id='create_button'  onclick={update_employee(employee_id)}>Сохранить</button>
+                                    </div>
+                                 </div>
+                                 <div class="col-md-3">
+                                    <div class="submit-btn mt-0">
+                                        <button class="btn btn-primary" type="button" id='delete_button'  onclick={delete_employee(employee_id)}>Удалить</button>
+                                    </div>
+                                 </div>
+                            </div>
+                        </div>
+ </form>
+
+<script src="{% static 'js/edit_employee.js' %}"></script>
+
+{% endblock %}
