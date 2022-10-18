@@ -12,7 +12,6 @@ function get_id() {
 //Функция получает данные для заполнения полей должности, категории и id POST запросом
 function get_position_data(id) {
     const payload = {id}
-    console.log(payload)
     fetch('http://127.0.0.1:8000/get_position/', {
         method: 'POST',
         headers: {
@@ -21,7 +20,6 @@ function get_position_data(id) {
         body: JSON.stringify(payload)
     }).then(response => response.json())
         .then(data => {
-            console.log(data)
             fill_fields(data)
         });
 
@@ -50,7 +48,6 @@ function update_position(id) {
             delete payload[item]
         }
     }
-    console.log(payload)
     fetch('http://127.0.0.1:8000/update_position/', {
         method: 'PATCH',
         headers: {

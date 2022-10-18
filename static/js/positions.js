@@ -6,7 +6,6 @@ function request_position_data() {
     fetch('http://127.0.0.1:8000/positions/')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
             render_table(data);
         });
 }

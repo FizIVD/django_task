@@ -77,7 +77,6 @@ function update_employee(id) {
             delete payload[item]
         }
     }
-    console.log(payload)
     fetch('http://127.0.0.1:8000/update_employee/', {
         method: 'PATCH',
         headers: {

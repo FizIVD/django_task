@@ -108,10 +108,9 @@ class Position(Model):
         try:
             cursor.execute(f"SELECT * FROM staff WHERE position = {self.id};")
             staff_list = dict_fetchall(cursor)
-            r = [i.get('full_name') for i in staff_list]
+            full_name_list = [i.get('full_name') for i in staff_list]
             if staff_list:
-                print(staff_list)
-                raise Exception(f'Current staff:{r} have this position')
+                raise Exception(f'Current staff:{full_name_list} have this position')
         except (Exception, psycopg2.Error) as error:
             raise Exception(error)
 
