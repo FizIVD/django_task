@@ -7,7 +7,8 @@ class Model:
     table: str
     id: int
 
-    def get(self):
+    def get(self) -> tuple:
+        """В случае успеха возвращает данные указанной по id записи указанной таблицы"""
         cursor = connection.cursor()
         try:
             cursor.execute(f"SELECT * FROM {self.table} WHERE id = {self.id};")
@@ -23,7 +24,8 @@ class Model:
                 cursor.close()
                 connection.close()
 
-    def update(self):
+    def update(self) -> int:
+        """В случае успеха обновляет данные указанной по id записи указанной таблицы, возвращает id"""
         cursor = connection.cursor()
         try:
             cursor.execute(f"SELECT * FROM {self.table} WHERE id = {self.id};")
@@ -41,7 +43,8 @@ class Model:
                 cursor.close()
                 connection.close()
 
-    def save(self):
+    def save(self) -> int:
+        """В случае успеха создает запись с указанными значениями в полях выбранной таблицы, возвращает id"""
         cursor = connection.cursor()
         try:
             cursor.execute(f"INSERT INTO {self.table} ({fields_to_save(self)}) VALUES ({values_to_save(self)}) RETURNING id;")
@@ -55,7 +58,8 @@ class Model:
                 cursor.close()
                 connection.close()
 
-    def delete(self):
+    def delete(self) -> int:
+        """В случае успеха удаляет запись по id в выбранной таблице, возвращает id удаленной записи"""
         cursor = connection.cursor()
         try:
             cursor.execute(f"SELECT * FROM {self.table} WHERE id = {self.id};")

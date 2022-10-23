@@ -64,8 +64,7 @@ def get_position(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def create_position(request: Any) -> HttpResponse:
-    """Возвращает json созданной должности,
-    например {"id": 75,"position": "Тестировщик2300", "category": "специалист"}"""
+    """Возвращает json созданной должности"""
     if request.method == 'POST':
         try:
             position = Position(**parse_body(request.body))
@@ -80,7 +79,7 @@ def create_position(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def del_position(request: Any) -> HttpResponse:
-    """Возвращает json: id удаленной должности, например{"id": 1}"""
+    """Возвращает json id удаленной должности"""
     if request.method == 'DELETE':
         try:
             position = Position(**parse_body(request.body))
@@ -96,7 +95,7 @@ def del_position(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def update_position(request: Any) -> HttpResponse:
-    """Возвращает json: id обновленной должности например {"id": 14}"""
+    """Возвращает json: id обновленной должности например"""
     if request.method == 'PATCH':
         try:
             position = Position(**parse_body(request.body))
@@ -125,6 +124,7 @@ def get_employee(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def create_employee(request: Any) -> HttpResponse:
+    """Возвращает json данные созданного сотрудника"""
     if request.method == 'POST':
         try:
             employee = Staff(**parse_body(request.body))
@@ -139,6 +139,7 @@ def create_employee(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def del_employee(request: Any) -> HttpResponse:
+    """Возвращает json id удаленного сотрудника"""
     if request.method == 'DELETE':
         try:
             employee = Staff(**parse_body(request.body))
@@ -153,6 +154,7 @@ def del_employee(request: Any) -> HttpResponse:
 
 @csrf_exempt
 def update_employee(request: Any) -> HttpResponse:
+    """Возвращает json: id обновленной записи сотрудника"""
     if request.method == 'PATCH':
         try:
             employee = Staff(**parse_body(request.body))
@@ -166,24 +168,30 @@ def update_employee(request: Any) -> HttpResponse:
 
 
 def render_index(request):
+    """Генерирует страницу "Список сотрудников" """
     return render(request=request, template_name='task/staff.html')
 
 
 def render_positions(request):
+    """Генерирует страницу "Список должностей" """
     return render(request=request, template_name='task/positions.html')
 
 
 def render_create_employee(request):
+    """Генерирует страницу "Добавление сотрудника" """
     return render(request=request, template_name='task/create_employee.html')
 
 
 def render_edit_employee(request):
+    """Генерирует страницу "Личная карточка сотрудника" """
     return render(request=request, template_name='task/edit_employee.html')
 
 
 def render_edit_position(request):
+    """Генерирует страницу "Изменение должности" """
     return render(request=request, template_name='task/edit_position.html')
 
 
 def render_create_position(request):
+    """Генерирует страницу "Новая должность" """
     return render(request=request, template_name='task/create_position.html')
